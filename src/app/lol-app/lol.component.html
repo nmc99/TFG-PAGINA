@@ -1,0 +1,123 @@
+<!-- @App Content -->
+<!-- =================================================== -->
+<div class="app">
+    <!-- #Left Sidebar ==================== -->
+    <div class="sidebar">
+        <div class="sidebar-inner">
+            <!-- ### $Sidebar Header ### -->
+            <div class="sidebar-logo">
+                <div class="peers ai-c fxw-nw">
+                    <div class="peer peer-greed">
+                        <a class="sidebar-link td-n" href="index.html">
+                            <div class="peers ai-c jc-c fxw-nw">
+                                <div class="peer">
+                                    <div class="logo">
+                                        <img style="width: 60px;height: 60px;"
+                                            src="../../assets/web/img/logo.png"
+                                            alt="">
+                                    </div>
+                                </div>
+                                <div class="peer peer-greed">
+                                    <h5 class="lh-1 mB-0 logo-text">MY STATS</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="peer">
+                        <div class="mobile-toggle sidebar-toggle">
+                            <a href="" class="td-n">
+                                <i class="ti-arrow-circle-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ### $Sidebar Menu ### -->
+            <ul class="sidebar-menu scrollable pos-r">
+
+                <li class="nav-item">
+                    <a class='sidebar-link' [routerLink]="['/lol/profile/summoner']">
+                        <span class="icon-holder">
+                            <i class="default-white ti-user"></i>
+                        </span>
+                        <span class="title">Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class='sidebar-link' [routerLink]="['/lol/profile/settings']">
+                        <span class="icon-holder">
+                            <i class="default-white ti-search"></i>
+                        </span>
+                        <span class="title">Search Summoner</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- #Main ============================ -->
+    <div class="page-container">
+        <!-- ### $Topbar ### -->
+        <div class="header navbar">
+            <div class="header-container">
+                <ul class="nav-left">
+                    <li>
+                        <a id='sidebar-toggle' class="sidebar-toggle" href="javascript:void(0);">
+                            <i class="ti-menu"></i>
+                        </a>
+                    </li>
+                    <li class="search-box">
+                        <a class="search-toggle no-pdd-right" href="javascript:void(0);">
+                            <i class="search-icon ti-search pdd-right-10"></i>
+                            <i class="search-icon-close ti-close pdd-right-10"></i>
+                        </a>
+                    </li>
+                    <li class="search-input">
+                        <input class="form-control" type="text" placeholder="Search...">
+                    </li>
+                </ul>
+                <ul class="nav-right pR-30">
+                    <li class="">
+                        <a href="" class="no-after" data-toggle="dropdown">
+                            <i class="ti-fullscreen"></i>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle no-after" data-toggle="dropdown">
+                            <i class="ti-settings"></i>
+                        </a>
+                        <ul class="dropdown-menu fsz-sm">
+                            <li>
+                                <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                                    <i class="ti-user mR-10"></i>
+                                    <span>Profile</span>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a (click)="cerrarSesion()" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                                    <i class="ti-power-off mR-10"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
+
+                </ul>
+            </div>
+        </div>
+
+        <!-- ### $App Screen Content ### -->
+        <main class='main-content bgc-grey-100'>
+            <div id='mainContent'>
+                <router-outlet></router-outlet>
+            </div>
+        </main>
+
+
+    </div>
+</div>

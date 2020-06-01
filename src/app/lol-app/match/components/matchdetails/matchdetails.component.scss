@@ -1,0 +1,500 @@
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: 2em;
+  .profile-view {
+    display: flex;
+    flex-direction: column;
+    .profile-view-container {
+      display: flex;
+      flex-direction: row;
+      -webkit-box-pack: justify;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex: 1 1 0%;
+      .profile-contain {
+        display: flex;
+        flex-direction: row;
+        .profile-container-image {
+          position: relative;
+          box-sizing: border-box;
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          &::before {
+            content: "";
+            position: absolute;
+            height: 80px;
+            width: 80px;
+            top: -2px;
+            left: -2px;
+            right: 0px;
+            bottom: 0px;
+            border-radius: 50%;
+            z-index: 0;
+            background: rgba(137, 160, 181, 0.2);
+          }
+          img {
+            user-select: none;
+            -webkit-user-drag: none;
+            position: absolute;
+            box-sizing: border-box;
+            width: 76px;
+            height: 76px;
+            z-index: 1;
+            object-fit: cover;
+            object-position: 0px 0px;
+            border-width: 2px;
+            border-style: solid;
+            border-color: rgb(7, 14, 29);
+            border-image: initial;
+            background: rgb(19, 28, 46);
+            border-radius: 50%;
+          }
+        }
+      }
+      .summoner-info {
+        display: flex;
+        flex-direction: column;
+        margin-left: 1em;
+        -webkit-box-pack: center;
+        justify-content: center;
+        .summoner-title {
+          display: flex;
+          flex-direction: row;
+          -webkit-box-align: center;
+          align-items: center;
+          h1 {
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 36px;
+            margin-block-start: 0px;
+            margin-block-end: 0px;
+            margin: -2px 16px 0px 0px;
+          }
+        }
+        .match-details {
+          display: flex;
+          flex-direction: row;
+          -webkit-box-align: center;
+          align-items: center;
+          margin-top: 4px;
+          .gamestatus {
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+            border-radius: 16.5px;
+            span {
+              display: inline-block;
+              font-size: 0.9rem;
+              line-height: 18px;
+              text-align: center;
+              padding: 8px 14px 6px;
+            }
+          }
+          .game-details {
+            display: flex;
+            flex-direction: row;
+            -webkit-box-align: center;
+            align-items: center;
+            margin-left: 1em;
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.match-table {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0%;
+
+  .separator {
+    height: 1px;
+    margin-bottom: 1em;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  .team-table {
+    display: flex;
+    flex-direction: column;
+    .team-title {
+      padding: 0px 1em;
+      flex: 1 1 0%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: row;
+      .title-container {
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        flex: 1 1 0%;
+        display: flex;
+        flex-direction: row;
+        font-weight: 0.9rem;
+        color: black;
+        .team-number {
+          span {
+            margin-left: 0.5em;
+          }
+        }
+        .kda-global {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          span {
+            margin-left: 0.25rem;
+          }
+        }
+        .team-buildings {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+        }
+        .global-objectives {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+        }
+        .global-gold {
+          align-items: center;
+          display: flex;
+          flex-direction: row;
+        }
+      }
+    }
+    .team-table-container {
+      margin-top: 0.75em;
+      display: flex;
+      flex-direction: column;
+      .summoner-details {
+        display: flex;
+        flex-direction: row;
+        -webkit-box-align: center;
+        align-items: center;
+        position: relative;
+        flex: 1 1 0%;
+        padding: 0.5em 1rem;
+        &:nth-child(odd){
+          background-color: #f6f6f6c5;
+        }
+        .summoner-details-container {
+          display: flex;
+          -webkit-box-align: center;
+          align-items: center;
+          -webkit-box-pack: justify;
+          justify-content: space-between;
+          .champ-img {
+            margin-right: 0.5rem;
+            .champ-img-container {
+              position: relative;
+              .img {
+                img {
+                  border-width: 2px;
+                  border-style: solid;
+                  border-image: initial;
+                  width: 35px;
+                  height: 35px;
+                  display: block;
+                  border-radius: 32px;
+                  background: rgba(255, 255, 255, 0.05);
+                }
+              }
+              .level {
+                position: absolute;
+                right: 0px;
+                bottom: 0px;
+                width: 14px;
+                height: 14px;
+                text-align: center;
+                background: rgb(19, 28, 46);
+                border-radius: 50%;
+                .level-container {
+                  font-size: 10px;
+                }
+              }
+            }
+          }
+        }
+      }
+      .summoner-spells {
+        display: flex;
+        flex-direction: column;
+        -webkit-box-align: center;
+        align-items: center;
+        .summoner-img {
+          width: 1rem;
+          height: 1rem;
+          border-radius: 4px;
+          &:first-child {
+            margin-bottom: 0.25rem;
+          }
+        }
+      }
+      .summoner-runes {
+        display: flex;
+        flex-direction: column;
+        -webkit-box-align: center;
+        align-items: center;
+        .summoner-runes-img {
+          &:first-child {
+            height: 20px;
+            width: 20px;
+            border-radius: 4px;
+          }
+          height: 14px;
+        }
+      }
+      .summonerName {
+        display: flex;
+        align-items: center;
+        .name {
+          clear: both;
+          display: inline-block;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          font-size: 0.9rem;
+          width: 6rem;
+          font-weight: 500;
+          overflow: hidden;
+          text-align: center;
+        }
+      }
+      .player-rank {
+        display: flex;
+        flex-direction: column;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        text-align: center;
+        color: rgb(121, 134, 163);
+        flex: 1 1 0%;
+      }
+      .summoner-items {
+        display: flex;
+        margin: 0px 0.5rem;
+        img {
+          width: 20px;
+          height: 20px;
+          margin: 0px 0.0625rem;
+          border-radius: 4px;
+          background: #e2e2e2;
+        }
+      }
+      .summoner-kda {
+        text-align: center;
+        flex: 1 1 0%;
+        margin: 0px 0.5rem;
+        .kda-string {
+          font-size: 0.9rem;
+        }
+        .kda {
+          font-size: 0.75rem;
+        }
+      }
+      .player-cs {
+        text-align: center;
+        flex: 1 1 0%;
+        margin: 0px 0.9rem;
+        .CS {
+          font-size: 0.9rem;
+        }
+        .kp {
+          font-size: 0.75rem;
+        }
+      }
+      .summoner-dmg {
+        margin-left: 0.9rem;
+        display: flex;
+        flex-direction: column;
+        -webkit-box-align: center;
+        align-items: center;
+        flex: 0.75 1 0%;
+      }
+    }
+  }
+}
+
+.svg-icon {
+  margin-bottom: 2px;
+  font-size: 1em;
+  color: black;
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: black;
+  fill: black;
+  &.m-left-svg {
+    margin-left: 0.5em;
+    margin-bottom: 2px;
+  }
+}
+
+.ml-icon {
+  margin-left: 0.25em;
+}
+
+.cb {
+  color: black;
+}
+
+.cw {
+  color: white;
+}
+
+.bd-team1 {
+  border-color: rgb(73, 180, 255);
+}
+.bd-team2 {
+  border-color: rgb(255, 88, 89);
+}
+
+.bd-you {
+  position: relative;
+  &::before{
+    content: '';
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background-color: #ffc400;
+  }
+  background-image: linear-gradient(to right, rgba(255, 196, 0,.2),rgba(255, 196, 0,.1));
+  .img{
+    img{
+      border-color: #ffc400;
+    }
+  }
+}
+
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  list-style: none;
+  max-height: 300px;
+  padding: 35px 0 15px 15px;
+  svg {
+    display: inline-block;
+  }
+}
+.timeline::before {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  padding-right: 4px;
+  border-right: 2px solid #f2f2f2;
+  content: "";
+}
+.timeline::after {
+  position: absolute;
+  top: 7px;
+  left: 35px;
+  content: "Your Timeline";
+  font-size: 1rem;
+  font-weight: bold;
+}
+.timeline__item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px 10px 0;
+}
+.timeline__step {
+  padding-right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.timeline__step__marker {
+  position: relative;
+  display: table-cell;
+  height: 10px;
+  min-height: 10px;
+  width: 10px;
+  min-width: 10px;
+  border: 2px solid #f2f2f2;
+  border-radius: 50%;
+  background-color: white;
+  z-index: 0;
+}
+.timeline__step__marker--blue {
+  border-color: rgb(73, 180, 255);
+}
+.timeline__step__marker--red {
+  border-color: rgb(255, 88, 89);
+}
+.timeline__step__marker--yellow {
+  border-color: #ffc400;
+}
+.timeline__time {
+  padding-right: 20px;
+}
+.timeline__title {
+  img {
+    padding-right: 3px;
+  }
+}
+.you{
+  
+}
+ng-scrollbar {
+  --scrollbar-size: 4px;
+  --scrollbar-thumb-color: #313435;
+  --scrollbar-thumb-hover-color: #3d4142;
+  --scrollbar-border-radius: 4px;
+}
+
+.defeat {
+  .gamestatus {
+    background: rgba(255, 88, 89, 0.15);
+    span {
+      color: rgb(255, 88, 89);
+    }
+  }
+}
+.victory {
+  .gamestatus {
+    background: rgb(73, 180, 255, 0.15);
+    span {
+      color: rgb(73, 180, 255);
+    }
+  }
+}
+
+.match-badge{
+    display: flex;
+    padding: 0.5rem;
+    .icon{
+      display: block;
+      height: 2.25rem;
+      width: 2.25rem;
+      margin-right: 0.75rem;
+    }
+    .info{
+      flex: 1 1 0%;
+      .title{
+        padding-top: 2px;
+        font-size: 0.75rem;
+        font-style: normal;
+        font-weight: 700;
+        margin: 0px;
+      }
+      .details{
+        box-sizing: border-box;
+        padding-top: 2px;
+        font-size: 0.75rem;
+        font-weight: normal;
+        font-style: normal;
+        margin: 0px;
+      }
+    }
+}

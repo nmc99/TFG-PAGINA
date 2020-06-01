@@ -1,0 +1,429 @@
+<div class="container">
+    <div class="title">
+        <div class="profile-view">
+            <div class="profile-view-container">
+                <div class="profile-contain">
+                    <div>
+                        <div class="profile-container-image">
+                            <img src="../../../../../assets/lol/profileIcons/{{yourSummonerProfileIcon}}.png"
+                                alt="Profile icon">
+                        </div>
+                    </div>
+                </div>
+                <div class="summoner-info">
+                    <div class="summoner-title">
+                        <h1>{{yourSummonerName}}</h1>
+                    </div>
+                    <div class="match-details"
+                        [ngClass]="{'defeat':yourTimeline.win == false, 'victory':yourTimeline.win == true}">
+                        <div class="gamestatus">
+                            <span *ngIf="yourTimeline.win == false">Defeat</span>
+                            <span *ngIf="yourTimeline.win == true">Victory</span>
+
+                        </div>
+                        <div class="game-details">{{gameMode}} · {{gameMonth}} · {{gameDuration}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-sm-12">
+            <div class="p-20 bgc-white bd">
+                <h5 class="mb-2">Your Achievements</h5>
+                <div *ngIf="demolition == true" class="match-badge">
+                    <div class="icon"></div>
+                    <div class="info">
+                        <p class="title">Demolition</p>
+                        <p class="details">You have destroy 3 or more towers in this match.</p>
+                    </div>
+                </div>
+                <div *ngIf="tripleKill == true" class="match-badge">
+                    <div class="icon"></div>
+                    <div class="info">
+                        <p class="title">Triple Kill</p>
+                        <p class="details">You have achieved a triple kill in this match.</p>
+                    </div>
+                </div>
+                
+                <div *ngIf="pentaKill == true" class="match-badge">
+                    <div class="icon"></div>
+                    <div class="info">
+                        <p class="title">Penta Kill</p>
+                        <p class="details">Impressive, don't forget to record that one</p>
+                    </div>
+                </div>
+                <div *ngIf="firstblood == true" class="match-badge">
+                    <div class="icon"></div>
+                    <div class="info">
+                        <p class="title">First Blood</p>
+                        <p class="details">You slain the first player in this match.</p>
+                    </div>
+                </div>
+                <div *ngIf="filthyRich == true" class="match-badge">
+                    <div class="icon"></div>
+                    <div class="info">
+                        <p class="title">Filthy Rich</p>
+                        <p class="details">You only care about money. Don't you?</p>
+                    </div>
+                </div>
+                <div *ngIf="kdaGod == true" class="match-badge">
+                    <div class="icon"></div>
+                    <div class="info">
+                        <p class="title">KDA God</p>
+                        <p class="details">You have the best KDA in this match.</p>
+                    </div>
+                </div>
+                <div *ngIf="damageKing == true" class="match-badge">
+                    <div class="icon"></div>
+                    <div class="info">
+                        <p class="title">Damage King</p>
+                        <p class="details">You have dealt more damage in this match.</p>
+                    </div>
+                </div>
+                <div *ngIf="filthyTank == true" class="match-badge">
+                    <div class="icon"></div>
+                    <div class="info">
+                        <p class="title">Filthy Tank</p>
+                        <p class="details">You have received more damage than everyone in this match.</p>
+                    </div>
+                </div>
+                <div *ngIf="visiongod == true" class="match-badge">
+                    <div class="icon"></div>
+                    <div class="info">
+                        <p class="title">Vision God</p>
+                        <p class="details">WOW! Your vision score is so good. Keep it up</p>
+                    </div>
+                </div>
+            </div>
+            <div class="p-20 bgc-white bd mt-4">
+                <h5 class="mb-2">To Improve</h5>
+                <div *ngIf="controlwards == true" class="match-badge">
+                    <div class="icon"></div>
+                    <div class="info">
+                        <p class="title">Any Control Ward</p>
+                        <p class="details">You should buy control wards. They gives you vision and a lot of information of enemies.</p>
+                    </div>
+                </div>
+                <div *ngIf="recurringDeaths == true" class="match-badge">
+                    <div class="icon"></div>
+                    <div class="info">
+                        <p class="title">Recurring Deaths</p>
+                        <p class="details">You have been killed repeteadly. Be careful, the enemy lines and the jungle tend to gank over and over again the lines that are going well. </p>
+                    </div>
+                </div>
+                <div *ngIf="useyourwards == true" class="match-badge">
+                    <div class="icon"></div>
+                    <div class="info">
+                        <p class="title">Use Your Wards</p>
+                        <p class="details">You dont used any trinket in 2 or more minutes. Trinkets are free vision and information for your team!</p>
+                    </div>
+                </div>
+                <div *ngIf="lowvisionscore == true" class="match-badge">
+                    <div class="icon"></div>
+                    <div class="info">
+                        <p class="title">Low Vision Score</p>
+                        <p class="details">Your Vision Score corresponds to the minutes gained and denied to your enemy. You have to aim to have 1.5x the duration of the game. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 col-sm-12">
+            <div class="match-table p-20 bgc-white bd">
+                <!--<div class="separator"></div>-->
+                <div class="team-table">
+                    <div class="team-title">
+                        <div class="title-container">
+                            <div class="team-number"><span>Team 1</span></div>
+                            <div class="kda-global">
+                                <span>{{team1Data.globalKills}}/{{team1Data.globalDeaths}}/{{team1Data.globalAssists}}</span>
+                            </div>
+                            <div class="team-buildings">
+                                <svg viewBox="0 0 32 32" class="svg-icon">
+                                    <title>match-turret</title>
+                                    <path
+                                        d="M16 19.667l9.333-9h-3.333l1.667-1.833-7.667-7.5-7.667 7.5 1.667 1.833h-3.333l9.333 9zM16 4.333l4.167 4.333-4.167 4.167-4.167-4.167 4.167-4.333zM9.333 15.667l3.333 15h6.667l3.333-15-6.689 6.485-6.644-6.485z">
+                                    </path>
+                                </svg>
+                                <div class="tower-kills ml-icon">{{team1Data.turrets}}</div>
+                                <svg viewBox="0 0 32 32" class="svg-icon m-left-svg">
+                                    <title>match-inhibitor</title>
+                                    <path
+                                        d="M16 1.333c-8.1 0-14.667 6.567-14.667 14.667s6.567 14.667 14.667 14.667c8.1 0 14.667-6.567 14.667-14.667-0.017-8.1-6.567-14.65-14.667-14.667zM16 27c-6.083 0-11-4.917-11-11s4.917-11 11-11c6.083 0 11 4.917 11 11 0 6.067-4.933 11-11 11zM16 22.667l-6.667-6.667 6.667-6.667 6.667 6.667-6.667 6.667z">
+                                    </path>
+                                </svg>
+                                <div class="inhibitor-kills ml-icon">{{team1Data.inhibitors}}</div>
+                            </div>
+                            <div class="global-objectives">
+                                <svg viewBox="0 0 32 32" class="svg-icon m-left-svg">
+                                    <title>monster-baron</title>
+                                    <path
+                                        d="M17.333 1.333l4.867 9-1.2 1.667h-2.417l-2.583-3.333-2.55 3.333h-2.45l-1.183-1.667 4.85-9-13.333 8 4.667 8c0 8.75 6.833 13.167 6.833 13.167v-4h6.5v4c0 0 6.667-4.417 6.667-13.167l4.667-8-13.333-8zM17.767 14.683c0.3 0.733 0.133 1.567-0.417 2.133s-1.367 0.733-2.083 0.417c-0.717-0.317-1.183-1.017-1.183-1.8 0-1.067 0.85-1.95 1.9-1.95 0.783 0 1.483 0.467 1.783 1.2zM10.85 17.933c0.55-0.55 1.367-0.717 2.083-0.417s1.183 1.017 1.183 1.8c0 1.067-0.85 1.933-1.9 1.95-0.8-0.017-1.5-0.5-1.783-1.217-0.3-0.733-0.133-1.567 0.417-2.117zM16 25.133c-1.050 0-1.9-0.867-1.9-1.95 0-1.067 0.85-1.933 1.9-1.933s1.9 0.867 1.9 1.95c0 0.517-0.2 1.017-0.55 1.383s-0.85 0.567-1.35 0.567v-0.017zM18.467 17.933c0.55-0.55 1.367-0.717 2.083-0.417s1.183 1.017 1.183 1.8c0 1.067-0.85 1.95-1.9 1.95-0.8-0.017-1.483-0.5-1.783-1.217-0.3-0.733-0.133-1.567 0.417-2.117z">
+                                    </path>
+                                </svg>
+                                <div class="baron-kills ml-icon">{{team1Data.barons}}</div>
+                                <svg viewBox="0 0 32 32" class="svg-icon m-left-svg">
+                                    <title>monster-riftHerald</title>
+                                    <path
+                                        d="M25 19.333c0.003 0.075 0.001 0.146-0.001 0.218v0c-0.002 0.090-0.005 0.182 0.001 0.282 0 2.755-3.224 5.308-5.833 7.167-0.951 0.608-2.016 0.85-3.167 0.833-1.090-0.016-2.266-0.258-3.167-0.833-2.609-1.859-5.833-4.412-5.833-7.167v-0.5l-3.667-1.833c0-6.518 7.167-14.167 7.167-14.167v7.472c1.513-1.178 3.58-1.902 5.5-1.972s3.487 0.794 5 1.972v-7.472c0 0 7.667 7.649 7.667 14.167l-3.667 1.833zM17.523 23.387c1.684-1.111 4.171-3.037 4.143-4.704 0-6.578-5.652-6.517-5.652-6.517s-5.681-0.062-5.681 6.517c0 1.667 2.476 3.581 4.171 4.704 0.917 0.595 2.102 0.595 3.018 0zM5.167 21l-3.833 3.667c1.576 1.787 6 4 6 4-1.742-2.985-2.167-7.667-2.167-7.667zM30.667 24.667c-1.576 1.787-6 4-6 4 1.742-2.985 2.167-7.667 2.167-7.667l3.833 3.667zM18.11 17.33l-1.338-1.919c-0.168-0.256-0.457-0.411-0.767-0.411s-0.599 0.155-0.767 0.411l-1.361 1.919c-0.291 0.417-0.28 0.97 0.028 1.375l1.361 1.754c0.17 0.235 0.446 0.374 0.739 0.374s0.569-0.14 0.739-0.374l1.366-1.754c0.297-0.412 0.297-0.963 0-1.375z">
+                                    </path>
+                                </svg>
+                                <div class="rift-herald-kills ml-icon">{{team1Data.riftHeralds}}</div>
+                                <svg viewBox="0 0 32 32" class="svg-icon m-left-svg">
+                                    <title>monster-dragon</title>
+                                    <path
+                                        d="M24.617 10.25v-7.433l-5.8 5.183-3.117-6.667-3.117 6.667-5.783-5.183v7.433h-5.467l6.050 4.95v5.067c0 0.967 0.4 2.217 1.117 2.883l6.35 7.017c0.3 0.317 0.7 0.5 1.15 0.5s0.85-0.183 1.15-0.5l6.367-7.017c0.717-0.667 1.117-1.9 1.117-2.883v-5.067l6.033-4.95h-6.050zM13.9 19.917c-3.767 0.9-4.9-6.25-4.9-6.25 6.9 3.917 4.9 6.25 4.9 6.25zM17.983 19.917c0 0-1.483-2.7 5.017-6.417 0 0-1.133 7.333-5.017 6.417z">
+                                    </path>
+                                </svg>
+                                <div class="dragon-kills">{{team1Data.dragons}}</div>
+                            </div>
+                            <div class="global-gold">
+                                <svg viewBox="0 0 32 32" class="svg-icon m-left-svg">
+                                    <title>match-gold</title>
+                                    <path
+                                        d="M18.5 4.050c6.4-0.483 11.85 2.617 12.15 6.867 0.233 3.117-2.4 6.017-6.35 7.517 0.133 0.383 0.2 0.767 0.233 1.167 0.317 4.25-4.6 7.9-11.033 8.367s-11.833-2.45-12.15-6.7c-0.217-3.117 2.4-6.017 6.35-7.517-0.133-0.383-0.2-0.767-0.233-1.167-0.317-4.25 4.633-8.050 11.033-8.533zM4.5 20.667c-0.283 2 2.967 4.817 8.833 4.333s7.65-2.9 6.767-5.617c-0.053 0.005-0.106 0.012-0.16 0.019-0.115 0.015-0.232 0.031-0.356 0.031-4.183 0.3-7.967-0.933-10.167-3.017-2.433 0.5-4.617 2.183-4.917 4.25z">
+                                    </path>
+                                </svg>
+                                <div class="total-gold">{{team1Data.globalGold}}K</div>
+                            </div>
+                        </div>
+
+                    </div> <!-- ACABA HEADER DE LA TABLA -->
+
+                    <div class="team-table-container">
+                        <a order="0" class="summoner-details"
+                            [ngClass]="{'bd-you':sum.summonerName == yourSummonerName}"
+                            *ngFor="let sum of participantIdentities1">
+                            <div class="summoner-details-container">
+                                <a class="champ-img">
+                                    <div class="champ-img-container">
+                                        <div class="img"><img
+                                                src="../../../../../assets/lol/champions/tiles/{{sum.championName}}_0.jpg"
+                                                class="bd-team1"></div>
+                                        <div class="level">
+                                            <div class="level-container cw">{{sum.participantLevel}}</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="summoner-spells">
+                                <img src="" class="summoner-img " alt="">
+                                <img src="" class="summoner-img " alt="">
+                            </div>
+                            <div class="summoner-runes">
+                                <img src="" class="summoner-runes-img" alt="">
+                                <img src="" class="summoner-runes-img" alt="">
+                            </div>
+                            <a class="summonerName">
+                                <div class="name cb">{{sum.summonerName}}</div>
+                            </a>
+                            <div class="player-rank"><span>-</span></div>
+                            <div class="summoner-items">
+                                <img src="../../../../../assets/lol/items/{{sum.item0}}.png" alt="">
+                                <img src="../../../../../assets/lol/items/{{sum.item1}}.png" alt="">
+                                <img src="../../../../../assets/lol/items/{{sum.item2}}.png" alt="">
+                                <img src="../../../../../assets/lol/items/{{sum.item3}}.png" alt="">
+                                <img src="../../../../../assets/lol/items/{{sum.item4}}.png" alt="">
+                                <img src="../../../../../assets/lol/items/{{sum.item5}}.png" alt="">
+                                <img src="../../../../../assets/lol/items/{{sum.item6}}.png" alt="">
+                            </div>
+                            <div class="summoner-kda">
+                                <div class="kda-string"><span
+                                        class="cb">{{sum.stats.kills}}/{{sum.stats.deaths}}/{{sum.stats.assists}}</span>
+                                </div>
+                                <div class="kda"><span class="cb">{{sum.kda}}KDA</span></div>
+                            </div>
+                            <div class="player-cs">
+                                <div class="CS cb">{{sum.minionspermin}} CS/MIN</div>
+                                <div class="kp cb">99%KP</div>
+                            </div>
+                            <div class="summoner-dmg"><span class="cb">{{sum.totalDamage}}</span></div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="separator"></div>
+                <div class="separator"></div>
+
+                <div class="team-table">
+                    <div class="team-title">
+                        <div class="title-container">
+                            <div class="team-number"><span>Team 2</span></div>
+                            <div class="kda-global">
+                                <span>{{team2Data.globalKills}}/{{team2Data.globalDeaths}}/{{team2Data.globalAssists}}</span>
+                            </div>
+                            <div class="team-buildings">
+                                <svg viewBox="0 0 32 32" class="svg-icon">
+                                    <title>match-turret</title>
+                                    <path
+                                        d="M16 19.667l9.333-9h-3.333l1.667-1.833-7.667-7.5-7.667 7.5 1.667 1.833h-3.333l9.333 9zM16 4.333l4.167 4.333-4.167 4.167-4.167-4.167 4.167-4.333zM9.333 15.667l3.333 15h6.667l3.333-15-6.689 6.485-6.644-6.485z">
+                                    </path>
+                                </svg>
+                                <div class="tower-kills ml-icon">{{team2Data.turrets}}</div>
+                                <svg viewBox="0 0 32 32" class="svg-icon m-left-svg">
+                                    <title>match-inhibitor</title>
+                                    <path
+                                        d="M16 1.333c-8.1 0-14.667 6.567-14.667 14.667s6.567 14.667 14.667 14.667c8.1 0 14.667-6.567 14.667-14.667-0.017-8.1-6.567-14.65-14.667-14.667zM16 27c-6.083 0-11-4.917-11-11s4.917-11 11-11c6.083 0 11 4.917 11 11 0 6.067-4.933 11-11 11zM16 22.667l-6.667-6.667 6.667-6.667 6.667 6.667-6.667 6.667z">
+                                    </path>
+                                </svg>
+                                <div class="inhibitor-kills ml-icon">{{team2Data.inhibitors}}</div>
+                            </div>
+                            <div class="global-objectives">
+                                <svg viewBox="0 0 32 32" class="svg-icon m-left-svg">
+                                    <title>monster-baron</title>
+                                    <path
+                                        d="M17.333 1.333l4.867 9-1.2 1.667h-2.417l-2.583-3.333-2.55 3.333h-2.45l-1.183-1.667 4.85-9-13.333 8 4.667 8c0 8.75 6.833 13.167 6.833 13.167v-4h6.5v4c0 0 6.667-4.417 6.667-13.167l4.667-8-13.333-8zM17.767 14.683c0.3 0.733 0.133 1.567-0.417 2.133s-1.367 0.733-2.083 0.417c-0.717-0.317-1.183-1.017-1.183-1.8 0-1.067 0.85-1.95 1.9-1.95 0.783 0 1.483 0.467 1.783 1.2zM10.85 17.933c0.55-0.55 1.367-0.717 2.083-0.417s1.183 1.017 1.183 1.8c0 1.067-0.85 1.933-1.9 1.95-0.8-0.017-1.5-0.5-1.783-1.217-0.3-0.733-0.133-1.567 0.417-2.117zM16 25.133c-1.050 0-1.9-0.867-1.9-1.95 0-1.067 0.85-1.933 1.9-1.933s1.9 0.867 1.9 1.95c0 0.517-0.2 1.017-0.55 1.383s-0.85 0.567-1.35 0.567v-0.017zM18.467 17.933c0.55-0.55 1.367-0.717 2.083-0.417s1.183 1.017 1.183 1.8c0 1.067-0.85 1.95-1.9 1.95-0.8-0.017-1.483-0.5-1.783-1.217-0.3-0.733-0.133-1.567 0.417-2.117z">
+                                    </path>
+                                </svg>
+                                <div class="baron-kills ml-icon">{{team2Data.barons}}</div>
+                                <svg viewBox="0 0 32 32" class="svg-icon m-left-svg">
+                                    <title>monster-riftHerald</title>
+                                    <path
+                                        d="M25 19.333c0.003 0.075 0.001 0.146-0.001 0.218v0c-0.002 0.090-0.005 0.182 0.001 0.282 0 2.755-3.224 5.308-5.833 7.167-0.951 0.608-2.016 0.85-3.167 0.833-1.090-0.016-2.266-0.258-3.167-0.833-2.609-1.859-5.833-4.412-5.833-7.167v-0.5l-3.667-1.833c0-6.518 7.167-14.167 7.167-14.167v7.472c1.513-1.178 3.58-1.902 5.5-1.972s3.487 0.794 5 1.972v-7.472c0 0 7.667 7.649 7.667 14.167l-3.667 1.833zM17.523 23.387c1.684-1.111 4.171-3.037 4.143-4.704 0-6.578-5.652-6.517-5.652-6.517s-5.681-0.062-5.681 6.517c0 1.667 2.476 3.581 4.171 4.704 0.917 0.595 2.102 0.595 3.018 0zM5.167 21l-3.833 3.667c1.576 1.787 6 4 6 4-1.742-2.985-2.167-7.667-2.167-7.667zM30.667 24.667c-1.576 1.787-6 4-6 4 1.742-2.985 2.167-7.667 2.167-7.667l3.833 3.667zM18.11 17.33l-1.338-1.919c-0.168-0.256-0.457-0.411-0.767-0.411s-0.599 0.155-0.767 0.411l-1.361 1.919c-0.291 0.417-0.28 0.97 0.028 1.375l1.361 1.754c0.17 0.235 0.446 0.374 0.739 0.374s0.569-0.14 0.739-0.374l1.366-1.754c0.297-0.412 0.297-0.963 0-1.375z">
+                                    </path>
+                                </svg>
+                                <div class="rift-herald-kills ml-icon">{{team2Data.riftHeralds}}</div>
+                                <svg viewBox="0 0 32 32" class="svg-icon m-left-svg">
+                                    <title>monster-dragon</title>
+                                    <path
+                                        d="M24.617 10.25v-7.433l-5.8 5.183-3.117-6.667-3.117 6.667-5.783-5.183v7.433h-5.467l6.050 4.95v5.067c0 0.967 0.4 2.217 1.117 2.883l6.35 7.017c0.3 0.317 0.7 0.5 1.15 0.5s0.85-0.183 1.15-0.5l6.367-7.017c0.717-0.667 1.117-1.9 1.117-2.883v-5.067l6.033-4.95h-6.050zM13.9 19.917c-3.767 0.9-4.9-6.25-4.9-6.25 6.9 3.917 4.9 6.25 4.9 6.25zM17.983 19.917c0 0-1.483-2.7 5.017-6.417 0 0-1.133 7.333-5.017 6.417z">
+                                    </path>
+                                </svg>
+                                <div class="dragon-kills">{{team2Data.dragons}}</div>
+                            </div>
+                            <div class="global-gold">
+                                <svg viewBox="0 0 32 32" class="svg-icon m-left-svg">
+                                    <title>match-gold</title>
+                                    <path
+                                        d="M18.5 4.050c6.4-0.483 11.85 2.617 12.15 6.867 0.233 3.117-2.4 6.017-6.35 7.517 0.133 0.383 0.2 0.767 0.233 1.167 0.317 4.25-4.6 7.9-11.033 8.367s-11.833-2.45-12.15-6.7c-0.217-3.117 2.4-6.017 6.35-7.517-0.133-0.383-0.2-0.767-0.233-1.167-0.317-4.25 4.633-8.050 11.033-8.533zM4.5 20.667c-0.283 2 2.967 4.817 8.833 4.333s7.65-2.9 6.767-5.617c-0.053 0.005-0.106 0.012-0.16 0.019-0.115 0.015-0.232 0.031-0.356 0.031-4.183 0.3-7.967-0.933-10.167-3.017-2.433 0.5-4.617 2.183-4.917 4.25z">
+                                    </path>
+                                </svg>
+                                <div class="total-gold">{{team2Data.globalGold}}K</div>
+                            </div>
+                        </div>
+
+                    </div> <!-- ACABA HEADER DE LA TABLA -->
+                    <div class="team-table-container">
+                        <a order="0" class="summoner-details"
+                            [ngClass]="{'bd-you':sum.summonerName == yourSummonerName}"
+                            *ngFor="let sum of participantIdentities2">
+                            <div class="summoner-details-container">
+                                <a class="champ-img">
+                                    <div class="champ-img-container">
+                                        <div class="img"><img
+                                                src="../../../../../assets/lol/champions/tiles/{{sum.championName}}_0.jpg"
+                                                class="bd-team2"></div>
+                                        <div class="level">
+                                            <div class="level-container cw">{{sum.participantLevel}}</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="summoner-spells">
+                                <img src="" class="summoner-img " alt="">
+                                <img src="" class="summoner-img " alt="">
+                            </div>
+                            <div class="summoner-runes">
+                                <img src="" class="summoner-runes-img" alt="">
+                                <img src="" class="summoner-runes-img" alt="">
+                            </div>
+                            <a class="summonerName">
+                                <div class="name cb">{{sum.summonerName}}</div>
+                            </a>
+                            <div class="player-rank"><span>-</span></div>
+                            <div class="summoner-items">
+                                <img src="../../../../../assets/lol/items/{{sum.item0}}.png" alt="">
+                                <img src="../../../../../assets/lol/items/{{sum.item1}}.png" alt="">
+                                <img src="../../../../../assets/lol/items/{{sum.item2}}.png" alt="">
+                                <img src="../../../../../assets/lol/items/{{sum.item3}}.png" alt="">
+                                <img src="../../../../../assets/lol/items/{{sum.item4}}.png" alt="">
+                                <img src="../../../../../assets/lol/items/{{sum.item5}}.png" alt="">
+                                <img src="../../../../../assets/lol/items/{{sum.item6}}.png" alt="">
+                            </div>
+                            <div class="summoner-kda">
+                                <div class="kda-string"><span
+                                        class="cb">{{sum.stats.kills}}/{{sum.stats.deaths}}/{{sum.stats.assists}}</span>
+                                </div>
+                                <div class="kda"><span class="cb">{{sum.kda}}KDA</span></div>
+                            </div>
+                            <div class="player-cs">
+                                <div class="CS cb">{{sum.minionspermin}} CS/MIN</div>
+                                <div class="kp cb">99%KP</div>
+                            </div>
+                            <div class="summoner-dmg"><span class="cb">{{sum.totalDamage}}</span></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="separator"></div>
+   <div class="row mt-3">
+
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-4">
+            <ul class="timeline bgc-white bd">
+                <ng-scrollbar>
+                    <li class="timeline__item" *ngFor="let event of yourTimeline.events">
+                        <div class="timeline__step">
+                            <div class="timeline__step__marker timeline__step__marker--red" *ngIf="event.type=='death'">
+                            </div>
+                            <div class="timeline__step__marker timeline__step__marker--blue"
+                                *ngIf="event.type=='kill' || event.type=='ward' || event.type=='building'"></div>
+                        </div>
+                        <div class="timeline__time">
+                            {{event.timestamp}} min
+                        </div>
+                        <div class="timeline__content">
+
+                            <div *ngIf="event.type=='kill' " class="timeline__title">
+
+                                You have slain {{event.victimName}}
+                            </div>
+                            <div *ngIf="event.type=='death' " class="timeline__title">
+
+                                You
+                                have been slain by {{event.killerName}}
+                            </div>
+                            <div *ngIf="event.type=='building' " class="timeline__title">
+                                <div *ngIf="event.buildingType=='an inhibitor'">
+                                    You have destroy {{event.buildingType}} <svg viewBox="0 0 32 32"
+                                        class="svg-icon m-left-svg">
+                                        <title>match-inhibitor</title>
+                                        <path
+                                            d="M16 1.333c-8.1 0-14.667 6.567-14.667 14.667s6.567 14.667 14.667 14.667c8.1 0 14.667-6.567 14.667-14.667-0.017-8.1-6.567-14.65-14.667-14.667zM16 27c-6.083 0-11-4.917-11-11s4.917-11 11-11c6.083 0 11 4.917 11 11 0 6.067-4.933 11-11 11zM16 22.667l-6.667-6.667 6.667-6.667 6.667 6.667-6.667 6.667z">
+                                        </path>
+                                    </svg></div>
+                                <div *ngIf="event.buildingType=='a tower'">
+                                    You have destroy {{event.buildingType}} <svg viewBox="0 0 32 32" class="svg-icon">
+                                        <title>match-turret</title>
+                                        <path
+                                            d="M16 19.667l9.333-9h-3.333l1.667-1.833-7.667-7.5-7.667 7.5 1.667 1.833h-3.333l9.333 9zM16 4.333l4.167 4.333-4.167 4.167-4.167-4.167 4.167-4.333zM9.333 15.667l3.333 15h6.667l3.333-15-6.689 6.485-6.644-6.485z">
+                                        </path>
+                                    </svg></div>
+                            </div>
+                            <div *ngIf="event.type=='ward' " class="timeline__title">
+
+                                You
+                                placed a ward <svg viewBox="0 0 32 32" class="svg-icon">
+                                    <title>match-ward</title>
+                                    <path
+                                        d="M18.667 4l3.333 2.667-6 6-6-6 3.333-2.667h5.333zM10.667 19.333l2-6.667-3.666-3.333h-7.668c2.067 4.833 7.333 5.333 7.333 5.333l-4 0.667c1.688 3.721 6 4 6 4zM22.999 9.333l-3.666 3.333 2 6.667c0 0 4.312-0.279 6-4l-4-0.667c0 0 5.266-0.5 7.333-5.333h-7.668zM20.667 28l-3.333-14h-2.667l-3.333 14h9.333z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </li>
+                </ng-scrollbar>
+
+            </ul>
+        </div>
+        <div class="col-md 4">
+            <div class="p-20 bgc-white bd">
+                <canvas id="canvas">{{datos}}</canvas>
+            </div>
+        </div>
+    </div>
+</div>

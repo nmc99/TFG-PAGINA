@@ -1,0 +1,40 @@
+<div class="container">
+    <h2>You don't have any summoner in your account. Add one: </h2>
+    <div class="row wrapper mt-5">
+        <div class="col-md-8">
+            <div class="buscar-summoner">
+                <div class="search-box bd">
+                    <div class="dropdown">
+                        <div class="drop ti-angle-down"></div>
+                        <div class="default-option" id="opc">EUW1</div>
+                        <ul class="bd">
+                            <li class="opc">EUW1</li>
+                            <li class="opc">NA1</li>
+                            <li class="opc">LAN</li>
+                            <li class="opc">LAS</li>
+                            <li class="opc">KR</li>
+                            <li class="opc">JP</li>
+                        </ul>
+                    </div>
+                    <div class="search-field">
+                        <input type="text" [(ngModel)]="user.summonerSearched">
+                        <i class="ti-search" (click)="buscarSummoner()"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="summoner" *ngIf="summoner != null">
+            <div class="summoner-container bd bgc-white p-10">
+                <div class="summoner-image-container">
+                    <img src="../../../../assets/lol/profileIcons/{{summoner.profileIconId}}.png" alt="">
+                    <span class="summoner-level">{{summoner.summonerLevel}}</span>
+                </div>
+                <span class="summoner-name">{{summoner.name}}</span>
+                <span class="icon-save" (click)="save()"><i class="ti-save"></i></span>
+                <span class="icon-close" (click)="close()"><i class="ti-close"></i></span>
+            </div>
+
+        </div>
+    </div>
+</div>

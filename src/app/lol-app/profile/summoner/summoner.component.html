@@ -1,0 +1,131 @@
+<!-- SUMMONER PROFILE -->
+<div class="container">
+    <div class="row ">
+        <div class="col-md-3 summoner-container">
+            <div class=" bd bgc-white p-20 profile-card d-flex">
+                <div class="margin-right">
+                    <div class="card-icon">
+                        <div class="icon-image">
+                            <img src="../../../../assets/lol/profileIcons/{{currentSummoner.profileIconId}}.png">
+                        </div>
+                    </div>
+                    <div class="level-icon">
+                        <p class="">{{currentSummoner.summonerLevel}}</p>
+                    </div>
+                </div>
+                <div class="profile-summoner-name">
+                    {{currentSummoner.name}}
+                </div>
+            </div>
+            <div class=" bd bgc-white p-20 match-card" *ngFor="let league of leagueV4">
+                <div class="image-container">
+                    <div class="img">
+                        <img  src="../../../../assets/lol/emblems/{{league.tier}}.png" alt="">
+                    </div>
+                </div>
+                <div class="data-container">
+                    {{wins}} - W · {{losses}} - L ({{winrate}}%)
+                </div>
+            </div>
+            <!--TERMINA PERFIL-->
+        </div>
+        <div class="col-md-9">
+            <div class="bd p-20 bgc-white" style="position: relative;">
+                <div class="container-animation">
+                    <app-loading-custom *ngIf="loadingBoolean===true"></app-loading-custom>
+                </div>
+
+                <div class="profile-match bd " *ngFor="let match of resultados"
+                    [routerLink]="['/lol/match/d',match.server,match.summonerName,match.matchId]">
+                    <div class="profile-match-border"
+                        [ngClass]="{'winborder':match.winBoolean == true, 'loseborder':match.winBoolean == false}">
+                    </div>
+                    <div class="profile-match-image"
+                        style="background-image:url('../../../../assets/lol/champions/tiles/{{match.Champion}}_0.jpg')">
+                        <div class="profile-match-icon">
+                            <svg *ngIf="match.lane == 'BOT' || match.role == 'DUO_CARRY' && match.gameMode =='CLASSIC'" viewBox="0 0 32 32">
+                                <title>role-bot</title>
+                                <path d="M27.333 27.333h-22.137l4.406-4.786h12.945v-12.945l4.786-4.406v22.137z"></path>
+                                <path fill-opacity="0.4"
+                                    d="M4 4h20.94l-5.041 4.188h-11.712v11.628l-4.188 4.526v-20.342zM18.359 18.359h-5.983v-5.983h5.983v5.983z">
+                                </path>
+                            </svg>
+                            <svg *ngIf="match.lane == 'MID' || match.lane == 'MIDDLE' && match.gameMode =='CLASSIC'" viewBox="0 0 32 32"
+                                class="createSvgIcon__Svg-sc-1l8xi8d-0 ldKivg">
+                                <title>role-mid</title>
+                                <path d="M5.333 26.667v-4.364l16.97-16.97h4.364v4.364l-16.97 16.97h-4.364z"></path>
+                                <path fill-opacity="0.4"
+                                    d="M19.394 5.333l-3.879 3.879h-6.303v6.303l-3.879 3.879v-14.061h14.061zM12.606 26.667l3.879-3.879h6.303v-6.303l3.879-3.879v14.061h-14.061z">
+                                </path>
+                            </svg>
+                            <svg viewBox="0 0 32 32" *ngIf="match.lane=='TOP' && match.gameMode =='CLASSIC'"
+                                class="createSvgIcon__Svg-sc-1l8xi8d-0 ldKivg">
+                                <title>role-top</title>
+                                <path d="M4 4h22.137l-4.406 4.786h-12.945v12.945l-4.786 4.406v-22.137z"></path>
+                                <path fill-opacity="0.4"
+                                    d="M27.333 27.333h-20.94l5.041-4.188h11.712v-12.227l4.188-4.526v20.94zM12.974 12.974h5.983v5.983h-5.983v-5.983z">
+                                </path>
+                            </svg>
+                            <svg *ngIf="match.role == 'DUO_SUPPORT' && match.gameMode =='CLASSIC'" viewBox="0 0 32 32"
+                                class="createSvgIcon__Svg-sc-1l8xi8d-0 ldKivg">
+                                <title>role-support</title>
+                                <path
+                                    d="M19.030 4h-6.061l-1.061 1.417 4.091 5.037 4.091-5.037-1.061-1.417zM11.152 8.88h-8.485c1.167 1.144 2.514 2.221 3.939 2.991 0.572 0.185 1.068 0.313 1.667 0.315h2.273l-2.424 2.991 3.939 1.889 1.515-5.667-2.424-2.519zM20.848 8.88h8.485c-1.168 1.143-2.515 2.222-3.939 2.991-0.572 0.185-1.068 0.313-1.667 0.315h-2.273l2.424 2.991-3.939 1.889-1.515-5.667 2.424-2.519zM19.182 24.148l-2.424-12.593c-0.103 0.358-0.399 0.595-0.758 0.63-0.357-0.037-0.655-0.273-0.758-0.63l-2.424 12.593 3.182 2.519 3.182-2.519z">
+                                </path>
+                            </svg>
+                            <svg *ngIf="match.lane == 'JUNGLE' && match.gameMode =='CLASSIC'" viewBox="0 0 32 32" class="createSvgIcon__Svg-sc-1l8xi8d-0 ldKivg">
+                                <title>role-jungle</title>
+                                <path
+                                    d="M16.21 29.333l-7.875-7.955c-0.12-4.152-1.65-8.136-4.335-11.288 6.93 2.606 8.040 7.818 8.040 7.818 1.245-6.091-3.39-15.242-3.39-15.242 13.305 16.652 7.56 26.667 7.56 26.667zM16.57 13c1.68-3.788 3.96-7.288 6.765-10.333-2.28 4.894-3.765 10.136-4.365 15.5 0 0-1.020-3.591-2.4-5.167zM28 9.879c-9.315 5.576-8.325 15.515-8.325 15.515l4.185-4.258c-0.15-8.106 4.14-11.258 4.14-11.258z">
+                                </path>
+                            </svg>
+                            <svg *ngIf="match.gameMode == 'URF' || match.gameMode == 'ONEFORALL'" viewBox="0 0 32 32"
+                                class="createSvgIcon__Svg-sc-1l8xi8d-0 ldKivg">
+                                <title>role-specialist</title>
+                                <path
+                                    d="M19.179 13.813h8.333c1.006 0 1.822 0.83 1.822 1.853s-0.816 1.853-1.822 1.853h-8.333l4.445 7.703c0.505 0.876 0.217 2.003-0.644 2.517-0.003 0.002-0.007 0.004-0.010 0.006l-0.008 0.005c-0.867 0.51-1.976 0.213-2.483-0.666l-4.479-7.762-4.479 7.762c-0.507 0.879-1.616 1.176-2.483 0.666l-0.008-0.005c-0.864-0.509-1.159-1.633-0.66-2.513 0.002-0.003 0.004-0.007 0.006-0.010l4.445-7.703h-8.333c-1.006 0-1.822-0.83-1.822-1.853s0.816-1.853 1.822-1.853h8.333l-4.445-7.703c-0.505-0.876-0.217-2.003 0.644-2.517 0.003-0.002 0.007-0.004 0.010-0.006l0.008-0.005c0.867-0.51 1.976-0.213 2.483 0.666l4.479 7.762 4.479-7.762c0.507-0.879 1.616-1.176 2.483-0.666l0.008 0.005c0.864 0.509 1.159 1.633 0.66 2.513-0.002 0.003-0.004 0.007-0.006 0.010l-4.445 7.703z">
+                                </path>
+                            </svg>
+                            <svg *ngIf="match.gameMode == 'ARAM'" viewBox="0 0 32 32"
+                                class="createSvgIcon__Svg-sc-1l8xi8d-0 ldKivg">
+                                <title>role-aram</title>
+                                <path
+                                    d="M29.333 2.667h-10.667l-16 16v10.667h10.667l16-16v-10.667zM5.864 26.121v-6.136l14.121-14.121h6.136v6.136l-14.121 14.121h-6.136zM5.864 4.803h7.47l-7.47 7.47v-7.47zM27.197 26.136v-7.47l-7.47 7.47h7.47z">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="profile-match-stats">
+                        <div class="lolmatch-title">
+                            <p class="bold"
+                                [ngClass]="{'win': match.winBoolean == true, 'lose':match.winBoolean == false}">
+                                {{match.win}}</p>
+                            <p>&nbsp;</p>
+                        </div>
+                        <div class="lolmatch-kda">
+                            <p class="bold">{{match.KDA}} KDA</p>
+                            <p>{{match.KDAString}}</p>
+                        </div>
+                        <div class="lolmatch-vision">
+                            <p class="bold">{{match.VisionKP}} VS</p>
+                            <p>{{match.KillParticipation}}% KP</p>
+                        </div>
+                        <div class="lolmatch-cs">
+                            <p class="bold">{{match.CSMin}} CS/min</p>
+                            <p>{{match.totalCS}} CS</p>
+                        </div>
+                        <div class="lolmatch-dmg">
+                            <p class="bold">{{match.DamageMin}} DAÑO/min</p>
+                            <p>{{match.DamagePercentTeam}}% del equipo</p>
+                        </div>
+                        <div class="lolmatch-details">
+                            <p class="bold">{{match.Duracion}}</p>
+                            <p style="text-align: end;">{{match.gameMode}}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
